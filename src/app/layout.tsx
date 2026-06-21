@@ -9,6 +9,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+
 const roboto = Roboto({
   variable: "--font-roboto",
   display: "swap",
@@ -39,11 +40,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${roboto.variable} ${geistMono.variable} ${inter.variable} h-full antialiased`}
+      className={`${geistSans.variable}  ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col w-full bg-white">
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

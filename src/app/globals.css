@@ -11,7 +11,7 @@
   --font-sans: var(--font-roboto);
   --font-mono: var(--font-geist-mono);
   --color-font: var(--font-color);
- --font-family: var(--font-inter-custom);
+  --font-family: var(--font-inter-custom);
   --font-heading: var(--font-inter-custom);
 
 
@@ -57,7 +57,8 @@
    1. DEFAULT THEME: RRWORLD PORTAL & NGO (Light, Clean Slate Theme)
    ========================================================================== */
 :root {
-  --background: rgb(3, 29, 45);
+  /* --background: rgb(3, 29, 45); */
+  --background: #0B0F19;
 
   --foreground: rgb(6, 39, 60);
   --card: oklch(1 0 0);
@@ -93,6 +94,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   --font-color: oklch(100% 0.00011 271.152);
+  /* --font-color:#EAB308; */
   --font-inter-custom: 'Inter', sans-serif;
 
 }
@@ -163,3 +165,24 @@
   animation: rotateSlow 20s linear infinite;
 }
 
+
+
+.text-luminous-gold {
+  --tw-text-opacity: 1;
+  color: rgb(255 215 0 / var(--tw-text-opacity, 1));
+}
+
+@keyframes mandalaRotate {
+  from{
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+.animate-mandalaRotate {
+   animation: rotateSlow 20s linear infinite;
+}

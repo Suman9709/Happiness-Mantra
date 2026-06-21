@@ -1,5 +1,6 @@
 'use client'
 
+import { CountingNumber } from '@/components/animate-ui/primitives/texts/counting-number'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import React from 'react'
@@ -49,7 +50,9 @@ const Herosection = () => {
             {/* Trust Metrics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mt-0">
                 <div className="p-4 rounded-xl shadow-md">
-                    <h2 className="text-3xl font-bold text-[#fe6f00]">1000+</h2>
+                    <CountingNumber 
+                    className="text-[#fe6f00] text-4xl"
+                    number={1000}  />
                     <p className="text-font">Students</p>
                 </div>
 
