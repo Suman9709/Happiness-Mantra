@@ -51,6 +51,11 @@ export function LandingPageNavbar() {
                         </a>
                     </li>
                     <li>
+                        <a href="#pillars" className="text-md font-sans font-semibold tracing-wide text-[#e7b653] hover:text-[#ffaa01] transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#e7b653] hover:after:w-full after:transition-all">
+                            Remedies
+                        </a>
+                    </li>
+                    <li>
                         <a href="#footer" className="text-md font-sans font-semibold tracing-wide text-[#e7b653] hover:text-[#ffaa01] transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#e7b653] hover:after:w-full after:transition-all">
                             Contact Us
                         </a>
@@ -88,6 +93,9 @@ export function LandingPageNavbar() {
                         </li>
                         <li>
                             <a onClick={() => setIsOpen(false)} href="#pillars" className="text-md font-sans tracking-wide font-semibold text-[#e7b653] block py-1">Our Pillars</a>
+                        </li>
+                        <li>
+                            <a onClick={() => setIsOpen(false)} href="#remedies" className="text-md font-sans tracking-wide font-semibold text-[#e7b653] block py-1">Remedies</a>
                         </li>
                         <li>
                             <a onClick={() => setIsOpen(false)} href="#involved" className="text-md font-sans tracking-wide font-semibold text-[#e7b653] block py-1">Get Involved</a>

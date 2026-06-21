@@ -1,10 +1,13 @@
-'use client'
+type Props = {
+    params: {
+        slug: string
+    }
+}
 
-import React from "react";
-
-type Props = { params: { slug: string } };
-
-export default function Page({ params }: Props) {
-    const { slug } = params;
-    return <div>Course: {slug}</div>;
+export default function SyllabusPage({ params }: Props) {
+    return (
+        <div>
+            <h1>{params.slug} Syllabus</h1>
+        </div>
+    )
 }
