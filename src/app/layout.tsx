@@ -8,7 +8,10 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
+// const poppins = localFont({
+//   src: './fonts/Poppins-Regular.ttf',
+//   variable: '--font-poppins',
+// })
 
 const roboto = Roboto({
   variable: "--font-roboto",

@@ -1,12 +1,12 @@
 'use client';
 
 import Image from "next/image";
-import { Cormorant_Garamond } from "next/font/google";
+// import { Cormorant_Garamond } from "next/font/google";
 
-const cormorant = Cormorant_Garamond({
-    subsets: ["latin"],
-    weight: ["700"],
-});
+// const cormorant = Cormorant_Garamond({
+//     subsets: ["latin"],
+//     weight: ["700"],
+// });
 
 export default function Hero() {
     return (
@@ -36,7 +36,7 @@ export default function Hero() {
                 <div className="max-w-6xl ">
                     <div className="w-full max-w-3xl">
                         <h1
-                            className={`${cormorant.className} text-luminous-gold font-bold leading-[1.1] text-[28px] sm:text-4xl md:text-5xl lg:text-6xl`}
+                            className="text-luminous-gold font-bold leading-[1.1] text-[28px] sm:text-4xl md:text-5xl lg:text-6xl"
                         >
                             RR World <br />
                             Siksha, Savalambam <br />

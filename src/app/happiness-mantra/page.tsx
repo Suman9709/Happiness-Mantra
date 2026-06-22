@@ -1,14 +1,5 @@
-"use client"
+import HappinessMantraLanding from "./HappinessMantraLanding";
 
-import React, { useState } from "react"
-import Herosection from "./home/Herosection"
-
-// Main Page Component
 export default function HappinessMantraHubPage() {
-  return (
-    <>
-        <Herosection />
-      
-    </>
-  )
+  return <HappinessMantraLanding />;
 }

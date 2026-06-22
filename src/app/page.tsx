@@ -1,4 +1,5 @@
 "use client"
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import React from "react"
 import Link from "next/link"
@@ -12,6 +13,7 @@ import Pillar from "./LandingPage/Pillar"
 import { About } from "./LandingPage/About"
 import { Remedies } from "./LandingPage/Remedies"
 import Footer from "./LandingPage/Footer"
+import OrganizationLanding from "./OrganizationLanding"
 
 
 
@@ -178,26 +180,5 @@ const Icons = {
 }
 
 export default function RRWorldPortal() {
-
-
-  return (
-
-    <>
-      <LandingPageNavbar />
-
-      <main>
-
-        <Hero />
-        <Pillar />
-        <About />
-        <Remedies/>
-        <Footer/>
-
-      </main>
-
-
-
-    </>
-  )
+  return <OrganizationLanding />
 }
-

@@ -1,6 +1,16 @@
 // src/app/happiness-mantra/layout.tsx
-import { HappinessMantraNavbar } from "@/components/spiritual/happinessmantra-navbar";
+import type { Metadata } from "next";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import React from "react";
+import "./happiness-mantra.css";
+
+const display = Cormorant_Garamond({ subsets: ["latin"], variable: "--hm-display", weight: ["500", "600", "700"] });
+const body = Manrope({ subsets: ["latin"], variable: "--hm-body" });
+
+export const metadata: Metadata = {
+  title: "Happiness Mantra | Ancient Wisdom for Modern Life",
+  description: "Seven practical paths for astrology, happiness, success, money, music, maths and language.",
+};
 
 export default function HappinessMantraLayout({
     children,
@@ -8,15 +18,6 @@ export default function HappinessMantraLayout({
     children: React.ReactNode;
 }) {
     return (
-        // This class injects the gold/dark variables to all shadcn components inside this folder!
-        <div>
-            {/* You can drop your specific spiritual Navbar here later */}
-            <main className="min-h-screen bg-background">
-                <HappinessMantraNavbar />
-                <div >
-                    {children}
-                </div>
-            </main>
-        </div>
+        <div className={`${display.variable} ${body.variable}`}>{children}</div>
     );
 }
