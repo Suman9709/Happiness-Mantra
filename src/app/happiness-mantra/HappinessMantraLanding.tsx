@@ -1,4 +1,4 @@
-"use client"
+
 
 import Image from "next/image";
 import Link from "next/link";
@@ -16,8 +16,8 @@ const mantras = [
 ];
 const products = [{ name: "Energised Rudraksha", type: "Spiritual essential", price: "₹1,499", icon: Gem, color: "saffron" }, { name: "Happiness Mantra Tee", type: "Premium cotton", price: "₹799", icon: Sparkles, color: "indigo" }, { name: "Mantra Journal", type: "Guided practice", price: "₹499", icon: BookOpen, color: "plum" }];
 
-export default function HappinessMantraLanding() {
-    return
+export default function HappinessMantraLanding(): React.JSX.Element {
+    return (
     <main className="hm-page">
         <header className="hm-nav">
             <div className="hm-nav-inner">
@@ -101,6 +101,7 @@ export default function HappinessMantraLanding() {
         <section className="hm-order" id="order"><div className="hm-container"><div><div className="hm-eyebrow">Ready when you are</div><h2>Begin your<br /><em>happier journey.</em></h2><p>Explore a course, request a product, or speak with the RR World team for personal guidance.</p></div><aside><a className="hm-button hm-primary" href="#mantras">Explore courses <ArrowRight /></a><a className="hm-button hm-ghost" href="tel:+919911894311">Talk to us · +91 99118 94311</a></aside></div></section>
         <footer className="hm-footer" id="contact"><div className="hm-footer-mandala">ॐ</div><div className="hm-container"><div className="hm-footer-callout"><div><span>Your journey can begin today</span><h2>One small mantra.<br /><em>One meaningful shift.</em></h2></div><a href="#demo">Begin with the free lesson <CirclePlay /></a></div><div className="hm-footer-main"><div className="hm-footer-brand"><Image src="/rrfoundationlogo.png" alt="RR World" width={64} height={64} /><div><strong>Happiness Mantra</strong><span>An RR World initiative</span></div><p>Ancient wisdom, practical learning and soulful living—made accessible for the modern world.</p><div className="hm-footer-social"><a href="https://www.youtube.com/@dr.rajaramyadav" aria-label="YouTube"><Youtube /></a><a href="https://www.instagram.com/officialrry" aria-label="Instagram"><Instagram /></a><a href="https://www.facebook.com/do.raja.rama.yadava" aria-label="Facebook"><Facebook /></a></div></div><div className="hm-footer-column"><h4>Explore</h4><a href="#about">Our philosophy</a><a href="#mantras">All seven mantras</a><a href="#demo">Free demo</a><a href="#shop">Mantra shop</a></div><div className="hm-footer-column"><h4>Popular paths</h4><Link href="/happiness-mantra/courses/jyotish-mantra">Jyotish Mantra</Link><Link href="/happiness-mantra/courses/success-mantra">Success Mantra</Link><Link href="/happiness-mantra/courses/money-mantra">Money Mantra</Link><Link href="/happiness-mantra/courses/bhasha-mantra">Bhasha Mantra</Link></div><div className="hm-footer-column contact"><h4>Speak with us</h4><a href="tel:+919911894311"><Phone /> +91 99118 94311</a><a href="mailto:contact@rrworld.org"><Mail /> contact@rrworld.org</a><span><MapPin /> New Delhi, India</span></div></div><div className="hm-footer-bottom"><span>© 2026 RR World. All rights reserved.</span><strong>ज्ञान · आनंद · कल्याण</strong><div><a href="#">Privacy</a><a href="#">Terms</a></div></div></div></footer>
     </main>
+    );
 }
 
 function Heading({ eyebrow, title, text }: { eyebrow: string; title: React.ReactNode; text: string }) { return <div className="hm-heading"><div><div className="hm-eyebrow">{eyebrow}</div><h2>{title}</h2></div><p>{text}</p></div> }
