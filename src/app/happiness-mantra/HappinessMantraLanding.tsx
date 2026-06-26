@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Check, CirclePlay, Gem, Globe2, GraduationCap, Heart, Languages, Mail, MapPin, Menu, Music2, PackageCheck, Phone, ShieldCheck, ShoppingBag, Sparkles, Star, Sun, TrendingUp, WalletCards } from "lucide-react";
-import { FaFacebookF as Facebook, FaInstagram as Instagram, FaYoutube as Youtube } from "react-icons/fa";
+import { ArrowLeft, ArrowRight, BookOpen, Check, CirclePlay, Globe2, GraduationCap, Heart, Languages, Mail, MapPin, Menu, Music2, Phone, Sparkles, Star, Sun, TrendingUp, WalletCards } from "lucide-react";
+import { FaFacebookF as Facebook, FaInstagram as Instagram, FaLinkedinIn as Linkedin, FaYoutube as Youtube } from "react-icons/fa";
+import { siteLinks } from "@/lib/site-links";
+import HappinessMantraActions from "./HappinessMantraActions";
 
 const mantras = [
     { slug: "jyotish-mantra", n: "01", title: "Jyotish Mantra", hi: "ज्योतिष मंत्र", text: "Read life's patterns through the timeless sciences of light, numbers and space.", topics: ["Palmistry", "Astrology", "Numerology", "Kundli", "Gemology", "Vaastu"], icon: Sparkles, tone: "violet" },
@@ -14,7 +16,6 @@ const mantras = [
     { slug: "maths-mantra", n: "06", title: "Maths Mantra", hi: "गणित मंत्र", text: "Make numbers friendly with Vedic methods, daily maths and applied numerology.", topics: ["Vedic Maths", "Daily Maths", "Numerology"], icon: GraduationCap, tone: "cyan" },
     { slug: "bhasha-mantra", n: "07", title: "Bhasha Mantra", hi: "भाषा मंत्र", text: "Speak and write with clarity through linguistics, grammar, poetry, songs and ghazal.", topics: ["Grammar", "Spelling", "Poetry", "Songs", "Ghazal"], icon: Languages, tone: "orange" },
 ];
-const products = [{ name: "Energised Rudraksha", type: "Spiritual essential", price: "₹1,499", icon: Gem, color: "saffron" }, { name: "Happiness Mantra Tee", type: "Premium cotton", price: "₹799", icon: Sparkles, color: "indigo" }, { name: "Mantra Journal", type: "Guided practice", price: "₹499", icon: BookOpen, color: "plum" }];
 
 export default function HappinessMantraLanding(): React.JSX.Element {
     return (
@@ -23,11 +24,11 @@ export default function HappinessMantraLanding(): React.JSX.Element {
                 <div className="hm-nav-inner">
                     <Link className="hm-brand" href="/happiness-mantra">
                         <Image src="/rrfoundationlogo.png" alt="RR World logo" width={46} height={46} />
-                        <span><strong>Happiness Mantra</strong><small>ज्ञान · आनंद · कल्याण</small></span></Link>
+                        <span><strong>Happiness Mantra</strong><small>ज्ञान · आनंद · कल्याण</small></span></Link><Link className="hm-back-home" href="/"><ArrowLeft /> RR World</Link>
                     <nav><a href="#about">About</a><a href="#mantras">Mantras</a>
                         <a href="#demo">Free demo</a>
                         <a href="#shop">Shop</a>
-                        <a className="hm-nav-cta" href="tel:+919911894311">Consult now</a>
+                        <a className="hm-nav-cta" href="#consult">Consult now</a>
                     </nav>
                     <a className="hm-menu" href="#mantras" aria-label="Open courses">
                         <Menu />
@@ -97,8 +98,7 @@ export default function HappinessMantraLanding(): React.JSX.Element {
             <section className="hm-section hm-mantras" id="mantras"><div className="hm-container"><Heading eyebrow="Choose your journey" title={<>The seven <em>mantras</em></>} text="Begin with the free overview, then go deeper with a complete guided course and syllabus for every path." /><div className="hm-card-grid">{mantras.map(m => { const Icon = m.icon; return <article className={`hm-card ${m.tone}`} key={m.slug}><div className="hm-card-top"><span>{m.n}</span><b><Icon /></b></div><p className="hm-hindi">{m.hi}</p><h3>{m.title}</h3><p>{m.text}</p><div className="hm-topics">{m.topics.map(t => <span key={t}>{t}</span>)}</div><Link href={`/happiness-mantra/courses/${m.slug}`}>View course <ArrowRight /></Link></article> })}</div></div></section>
             <section className="hm-section hm-demo" id="demo"><div className="hm-container hm-demo-card"><div className="hm-video"><Image src="/bg5.jpg" alt="Happiness Mantra course preview" fill sizes="(max-width:800px) 100vw,50vw" /><div /><Link href="/happiness-mantra/courses/free-demo" aria-label="Play free preview"><CirclePlay /></Link><span>7 mantras · one free introduction</span></div><div className="hm-demo-copy"><div className="hm-kicker"><Sparkles /> Your first lesson is on us</div><h2>Meet every mantra.<br /><em>Choose what calls you.</em></h2><p>Watch the complete orientation to understand all seven learning paths before choosing a paid course.</p><ul><li><Check /> Overview of all seven disciplines</li><li><Check /> Bilingual teaching in Hindi and English</li><li><Check /> No payment or commitment required</li></ul><Link className="hm-button hm-cream" href="/happiness-mantra/courses/free-demo">Start free demo <ArrowRight /></Link></div></div></section>
             <section className="hm-section hm-founder"><div className="hm-container hm-founder-grid"><div className="hm-portrait"><div className="hm-ring" /><Image src="/profile.png" alt="Dr. Raja Ram Yadav" width={460} height={620} /><div className="hm-experience"><strong>30+</strong><span>years of<br />teaching</span></div></div><div className="hm-founder-copy"><div className="hm-eyebrow">Your guide on this journey</div><h2>Wisdom, made<br /><em>human.</em></h2><blockquote>“Knowledge becomes powerful when it helps us live with greater clarity, prosperity and compassion.”</blockquote><p>Dr. Raja Ram Yadav brings decades of learning across astrology, Vedic studies, education, language, music and life guidance into one accessible platform.</p><div className="hm-founder-points"><span><Globe2 /> Holistic perspective</span><span><BookOpen /> Practical curriculum</span><span><Heart /> People-first teaching</span></div><a className="hm-text-link" href="#contact">Know your mentor <ArrowRight /></a></div></div></section>
-            <section className="hm-section hm-shop" id="shop"><div className="hm-container"><Heading eyebrow="Carry the intention with you" title={<>The mantra <em>shop</em></>} text="Thoughtfully selected spiritual and lifestyle essentials, prepared and dispatched with care." /><div className="hm-products">{products.map(p => { const Icon = p.icon; return <article className={p.color} key={p.name}><div className="hm-product-art"><div /><Icon /><span>ॐ</span></div><section><div><small>{p.type}</small><h3>{p.name}</h3></div><strong>{p.price}</strong></section><a href="#order">Order now <ShoppingBag /></a></article> })}</div><div className="hm-shop-note"><ShieldCheck /><span><strong>Simple & secure ordering.</strong> Share delivery details; our team confirms availability and dispatches your order.</span><PackageCheck /></div></div></section>
-            <section className="hm-order" id="order"><div className="hm-container"><div><div className="hm-eyebrow">Ready when you are</div><h2>Begin your<br /><em>happier journey.</em></h2><p>Explore a course, request a product, or speak with the RR World team for personal guidance.</p></div><aside><a className="hm-button hm-primary" href="#mantras">Explore courses <ArrowRight /></a><a className="hm-button hm-ghost" href="tel:+919911894311">Talk to us · +91 99118 94311</a></aside></div></section>
+            <HappinessMantraActions />
             <footer className="hm-footer" id="contact">
                 <div className="hm-footer-mandala">
                     ॐ
@@ -119,15 +119,19 @@ export default function HappinessMantraLanding(): React.JSX.Element {
                             </div>
                             <p>Ancient wisdom, practical learning and soulful living—made accessible for the modern world.</p>
                             <div className="hm-footer-social ">
-                                <a href="https://www.youtube.com/@dr.rajaramyadav" aria-label="YouTube">
+                                <a href={siteLinks.socials.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                                     <Youtube />
                                 </a>
 
-                                <a href="https://www.instagram.com/officialrry" aria-label="Instagram">
+                                <a href={siteLinks.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                                     <Instagram />
                                 </a>
 
-                                <a href="https://www.facebook.com/do.raja.rama.yadava" aria-label="Facebook">
+                                <a href={siteLinks.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                    <Linkedin />
+                                </a>
+
+                                <a href={siteLinks.socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                                     <Facebook />
                                 </a>
                             </div>
@@ -147,10 +151,10 @@ export default function HappinessMantraLanding(): React.JSX.Element {
                             <Link href="/happiness-mantra/courses/bhasha-mantra">Bhasha Mantra</Link>
                         </div>
                         <div className="hm-footer-column contact">
-                            <h4>Speak with us</h4><a href="tel:+919911894311">
-                                <Phone /> +91 99118 94311</a>
-                            <a href="mailto:contact@rrworld.org">
-                                <Mail /> contact@rrworld.org
+                            <h4>Speak with us</h4><a href={siteLinks.phoneHref}>
+                                <Phone /> {siteLinks.phoneDisplay}</a>
+                            <a href={siteLinks.emailHref}>
+                                <Mail /> {siteLinks.email}
                             </a>
                             <span>
                                 <MapPin /> New Delhi, India
@@ -160,8 +164,8 @@ export default function HappinessMantraLanding(): React.JSX.Element {
                     <div className="hm-footer-bottom">
                         <span>© 2026 RR World. All rights reserved.</span><strong>ज्ञान · आनंद · कल्याण</strong>
                         <div>
-                            <a href="#">Privacy</a>
-                            <a href="#">Terms</a>
+                            <Link href="/privacy-policy">Privacy</Link>
+                            <Link href="/terms-of-service">Terms</Link>
                         </div>
                     </div>
                 </div>

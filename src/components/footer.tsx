@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { siteLinks } from "@/lib/site-links"
 
 
 const Footer = () => {
@@ -67,7 +68,7 @@ const Footer = () => {
                         {/* Social Links */}
                         <div className="flex gap-3 pt-2">
                             <a
-                                href="https://www.youtube.com/@dr.rajaramyadav"
+                                href={siteLinks.socials.youtube}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-9 h-9 rounded-full bg-slate-800 hover:bg-red-500 hover:text-white flex items-center justify-center text-slate-400 transition-all duration-300 hover:scale-110"
@@ -76,7 +77,7 @@ const Footer = () => {
                             </a>
 
                             <a
-                                href="https://www.linkedin.com/in/dr-raja-ram-yadav-astrologer-33a64821/"
+                                href={siteLinks.socials.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-9 h-9 rounded-full bg-slate-800 hover:bg-blue-600 hover:text-white flex items-center justify-center text-slate-400 transition-all duration-300 hover:scale-110"
@@ -85,7 +86,7 @@ const Footer = () => {
                             </a>
 
                             <a
-                                href="https://www.instagram.com/officialrry"
+                                href={siteLinks.socials.instagram}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-9 h-9 rounded-full bg-slate-800 hover:bg-pink-500 hover:text-white flex items-center justify-center text-slate-400 transition-all duration-300 hover:scale-110"
@@ -94,7 +95,7 @@ const Footer = () => {
                             </a>
 
                             <a
-                                href="https://www.facebook.com/do.raja.rama.yadava"
+                                href={siteLinks.socials.facebook}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-9 h-9 rounded-full bg-slate-800 hover:bg-blue-700 hover:text-white flex items-center justify-center text-slate-400 transition-all duration-300 hover:scale-110"
@@ -153,19 +154,19 @@ const Footer = () => {
 
                             <li>
                                 <a
-                                    href="mailto:contact@rrworld.org"
+                                    href={siteLinks.emailHref}
                                     className="hover:text-amber-400 transition-colors"
                                 >
-                                    contact@rrworld.org
+                                    {siteLinks.email}
                                 </a>
                             </li>
 
                             <li>
                                 <a
-                                    href="tel:+919911894311"
+                                    href={siteLinks.phoneHref}
                                     className="hover:text-amber-400 transition-colors"
                                 >
-                                    +91 9911894311
+                                    {siteLinks.phoneDisplay}
                                 </a>
                             </li>
                         </ul>
@@ -203,7 +204,7 @@ const Footer = () => {
                             </Link>
 
                             <Link
-                                href="/contact"
+                                href="/#contact"
                                 className="text-slate-500 hover:text-amber-400 text-xs"
                             >
                                 Contact

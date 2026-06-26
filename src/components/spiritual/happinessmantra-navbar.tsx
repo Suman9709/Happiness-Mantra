@@ -1,8 +1,10 @@
 "use client"
 
 import React, { useState } from "react"
-import { Heart, Menu, X, Phone, Mail, ChevronDown, User } from "lucide-react"
+import { Menu, X, Phone, Mail } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+import { siteLinks } from "@/lib/site-links"
 
 export function HappinessMantraNavbar() {
     const [isOpen, setIsOpen] = useState(false)
@@ -13,7 +15,7 @@ export function HappinessMantraNavbar() {
             <div className="block">
                 <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between text-sm">
                     {/* Left side: Contact info */}
-                    <a href="#" className="flex items-center gap-2 group shrink-0">
+                    <Link href="/happiness-mantra" className="flex items-center gap-2 group shrink-0">
                         <div className="h-12 w-12 lg:h-14 lg:w-14 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                             <div className="h-24 w-24 lg:h-12 lg:w-12  flex items-center justify-center shadow-md">
                                 <Image src="/rrfoundationlogo.png" alt="Logo" width={72} height={72} />
@@ -27,7 +29,7 @@ export function HappinessMantraNavbar() {
                                 Foundation
                             </span>
                         </div>
-                    </a>
+                    </Link>
 
 
                 </div>
@@ -45,7 +47,7 @@ export function HappinessMantraNavbar() {
                         <Phone className="h-3.5 w-3.5 group-hover:scale-105 transition-transform" />
                         <p className="font-medium">Talk to our Astrogers -
                             <span className="text-[#fe6f00] font-semibold">
-                                {" "} +1800 326 3264
+                                {" "} {siteLinks.phoneDisplay}
                             </span>
                         </p>
                     </div>
@@ -53,7 +55,7 @@ export function HappinessMantraNavbar() {
                         <Mail className="h-3.5 w-3.5 group-hover:scale-105 transition-transform" />
                         <p className="font-medium">Talk to our Astrogers -
                             <span className="text-[#fe6f00] font-semibold">
-                                {" "} support@website.com
+                                {" "} {siteLinks.email}
                             </span>
                         </p>
                     </div>
@@ -62,9 +64,9 @@ export function HappinessMantraNavbar() {
                 {/* MIDDLE: ALL NAVIGATION LINKS (Desktop) */}
                 <ul className="hidden lg:flex items-center gap-5 xl:gap-7 antialiased text-font">
                     <li>
-                        <a href="#" className="text-sm font-medium hover:text-[#fe6f00] transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#fe6f00] hover:after:w-full after:transition-all duration-300">
+                        <Link href="/happiness-mantra" className="text-sm font-medium hover:text-[#fe6f00] transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#fe6f00] hover:after:w-full after:transition-all duration-300">
                             Home
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a href="#about" className="text-sm font-medium  hover:text-[#fe6f00] transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#fe6f00] hover:after:w-full after:transition-all duration-300">
@@ -116,11 +118,11 @@ export function HappinessMantraNavbar() {
                     <div className="flex flex-col gap-3 pb-3 border-b border-slate-100">
                         <div className="flex items-center gap-2 text-font">
                             <Phone className="h-4 w-4 text-[#fe6f00]" />
-                            <span className="text-sm font-medium">+1800 326 3264</span>
+                            <span className="text-sm font-medium">{siteLinks.phoneDisplay}</span>
                         </div>
                         <div className="flex items-center gap-2 text-font">
                             <Mail className="h-4 w-4 text-[#fe6f00]" />
-                            <span className="text-sm font-medium">support@website.com</span>
+                            <span className="text-sm font-medium">{siteLinks.email}</span>
                         </div>
 
                     </div>
@@ -128,9 +130,9 @@ export function HappinessMantraNavbar() {
                     {/* Navigation Links */}
                     <ul className="flex flex-col gap-3 text-font">
                         <li>
-                            <a onClick={() => setIsOpen(false)} href="#" className="text-base font-medium  block py-2 hover:text-[#fe6f00] hover:pl-2 transition-all duration-200">
+                            <Link onClick={() => setIsOpen(false)} href="/happiness-mantra" className="text-base font-medium  block py-2 hover:text-[#fe6f00] hover:pl-2 transition-all duration-200">
                                 Home
-                            </a>
+                            </Link>
                         </li>
                         <li>
                             <a onClick={() => setIsOpen(false)} href="#about" className="text-base font-medium  block py-2 hover:text-[#fe6f00] hover:pl-2 transition-all duration-200">

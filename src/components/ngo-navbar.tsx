@@ -4,6 +4,7 @@
 import React, { useState } from "react"
 import { Heart, Menu, X } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 export function LandingPageNavbar() {
     const [isOpen, setIsOpen] = useState(false)
 
@@ -12,7 +13,7 @@ export function LandingPageNavbar() {
             <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
                 {/* LEFT SIDE: LOGO */}
-                <a href="#" className="flex items-center gap-1 group">
+                <Link href="/" className="flex items-center gap-1 group">
                     <div className="h-14 w-14 flex items-center justify-center group-hover:scale-110 transition-transform">
                         <Image
                             src="/rrfoundationlogo.png"
@@ -31,14 +32,14 @@ export function LandingPageNavbar() {
                             World
                         </span>
                     </div>
-                </a>
+                </Link>
 
                 {/* MIDDLE: 4 NAVIGATION LINKS */}
                 <ul className="hidden md:flex items-center gap-8 antialiased">
                     <li>
-                        <a href="#" className="text-md font-sans font-semibold tracing-wide text-[#e7b653] hover:text-[#ffaa01] transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#e7b653] hover:after:w-full after:transition-all">
+                        <Link href="/" className="text-md font-sans font-semibold tracing-wide text-[#e7b653] hover:text-[#ffaa01] transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#e7b653] hover:after:w-full after:transition-all">
                             Home
-                        </a>
+                        </Link>
                     </li>
                     <li>
                         <a href="#about" className="text-md font-sans font-semibold tracing-wide text-[#e7b653] hover:text-[#ffaa01] transition-colors relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-[#e7b653] hover:after:w-full after:transition-all">
@@ -65,10 +66,10 @@ export function LandingPageNavbar() {
                 {/* RIGHT SIDE: CORE CTA BUTTON & MOBILE HAMBURGER */}
                 <div className="flex items-center gap-4">
                     {/* Donate CTA Button */}
-                    <button className="hidden sm:flex items-center gap-2 border border-[#ffaa01] text-[#ffaa01] font-medium text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg shadow-[#ffaa01]/10 active:scale-95 transition-all cursor-pointer">
+                    <Link href="/#contact" className="hidden sm:flex items-center gap-2 border border-[#ffaa01] text-[#ffaa01] font-medium text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg shadow-[#ffaa01]/10 active:scale-95 transition-all cursor-pointer">
                         <Heart className="h-4 w-4 fill-current text-[#ffaa01]" />
                         Donate Now
-                    </button>
+                    </Link>
 
                     {/* Responsive Mobile Toggle Icon */}
                     <button
@@ -86,7 +87,7 @@ export function LandingPageNavbar() {
                 <div className="absolute top-16 left-0 w-full bg-white border-b border-slate-200 px-6 py-6 flex flex-col gap-5 md:hidden shadow-xl animate-in fade-in slide-in-from-top-5 duration-200">
                     <ul className="flex flex-col gap-4">
                         <li>
-                            <a onClick={() => setIsOpen(false)} href="#" className="text-md font-sans font-semibold tracking-wide text-[#e7b653] block py-1">Home</a>
+                            <Link onClick={() => setIsOpen(false)} href="/" className="text-md font-sans font-semibold tracking-wide text-[#e7b653] block py-1">Home</Link>
                         </li>
                         <li>
                             <a onClick={() => setIsOpen(false)} href="#about" className="text-md font-sans tracking-wide font-semibold text-[#e7b653] block py-1">About Us</a>
@@ -102,10 +103,10 @@ export function LandingPageNavbar() {
                         </li>
                     </ul>
                     <hr className="border-slate-100" />
-                    <button className="w-full flex items-center justify-center gap-2 bg-[#e7b653] text-[#ffaa01] font-semibold py-3 rounded-xl shadow-md">
+                    <Link href="/#contact" className="w-full flex items-center justify-center gap-2 bg-[#e7b653] text-[#ffaa01] font-semibold py-3 rounded-xl shadow-md">
                         <Heart className="h-4 w-4 fill-current text-[#ffaa01]" />
                         Donate Now
-                    </button>
+                    </Link>
                 </div>
             )}
         </nav>

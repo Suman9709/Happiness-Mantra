@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Building2, Check, Globe2, GraduationCap, HeartHandshake, Mail, MapPin, Menu, Music2, Phone, Play, Quote, Rocket, Sparkles, Users } from "lucide-react";
-import { FaInstagram as Instagram, FaLinkedinIn as Linkedin, FaYoutube as Youtube } from "react-icons/fa";
+import { FaFacebookF as Facebook, FaInstagram as Instagram, FaLinkedinIn as Linkedin, FaYoutube as Youtube } from "react-icons/fa";
+import { siteLinks } from "@/lib/site-links";
 import "./organization.css";
 
 const pillars = [
@@ -26,20 +27,23 @@ export default function OrganizationLanding() {
 
             <section className="org-section org-story"><div className="org-container org-story-grid"><div className="org-story-art"><div className="org-story-image"><Image src="/about1.jpg" alt="Education and community at RR World" fill sizes="(max-width:900px) 100vw, 48vw" /></div><div className="org-story-badge"><strong>Since</strong><span>1994</span></div></div><div className="org-story-copy"><div className="org-eyebrow">The vision behind the work</div><h2>Knowledge should<br /><em>move lives forward.</em></h2><p>Inspired by Dr. Raja Ram Yadav’s journey as an educator, physicist, researcher and guide, RR World connects deep scholarship with practical action.</p><blockquote><Quote />“True education does not simply inform a person. It gives them the confidence to shape their own future.”</blockquote><a href="#contact" className="org-text-link">Meet our founder <ArrowRight /></a></div></div></section>
 
-            <section className="org-section org-impact" id="impact"><div className="org-container"><SectionTitle eyebrow="Progress you can feel" title={<>Impact with <em>intention</em></>} text="Every program is designed around useful knowledge, personal agency and long-term community value." /><div className="org-impact-grid"><article><Users /><strong>10,000+</strong><h3>Lives touched</h3><p>Across education, guidance and community programs.</p></article><article><BookOpen /><strong>100+</strong><h3>Research works</h3><p>Ideas built on study, experience and real-world relevance.</p></article><article><Building2 /><strong>4</strong><h3>Connected initiatives</h3><p>One ecosystem supporting the whole human journey.</p></article></div><div className="org-impact-banner"><div><span>Ready to create meaningful change?</span><h3>There is a place for your energy here.</h3></div><a href="mailto:contact@rrworld.org">Collaborate with us <ArrowRight /></a></div></div></section>
+            <section className="org-section org-impact" id="impact"><div className="org-container"><SectionTitle eyebrow="Progress you can feel" title={<>Impact with <em>intention</em></>} text="Every program is designed around useful knowledge, personal agency and long-term community value." /><div className="org-impact-grid"><article><Users /><strong>10,000+</strong><h3>Lives touched</h3><p>Across education, guidance and community programs.</p></article><article><BookOpen /><strong>100+</strong><h3>Research works</h3><p>Ideas built on study, experience and real-world relevance.</p></article><article><Building2 /><strong>4</strong><h3>Connected initiatives</h3><p>One ecosystem supporting the whole human journey.</p></article></div><div className="org-impact-banner"><div><span>Ready to create meaningful change?</span><h3>There is a place for your energy here.</h3></div><a href={siteLinks.emailHref}>Collaborate with us <ArrowRight /></a></div></div></section>
         </main>
 
         <footer className="org-footer" id="contact">
-            <div className="org-footer-orb" /><div className="org-container"><div className="org-footer-top"><div><div className="org-eyebrow">Stay close to the work</div><h2>Good ideas grow<br />when we <em>share them.</em></h2></div><a className="org-footer-mail" href="mailto:contact@rrworld.org"><span>Start a conversation</span><strong>contact@rrworld.org</strong><ArrowRight /></a></div><div className="org-footer-main"><div className="org-footer-brand"><Image src="/rrfoundationlogo.png" alt="RR World" width={64} height={64} /><p>Education, self-reliance, creativity and happiness—woven into one world of possibility.</p>
+            <div className="org-footer-orb" /><div className="org-container"><div className="org-footer-top"><div><div className="org-eyebrow">Stay close to the work</div><h2>Good ideas grow<br />when we <em>share them.</em></h2></div><a className="org-footer-mail" href={siteLinks.emailHref}><span>Start a conversation</span><strong>{siteLinks.email}</strong><ArrowRight /></a></div><div className="org-footer-main"><div className="org-footer-brand"><Image src="/rrfoundationlogo.png" alt="RR World" width={64} height={64} /><p>Education, self-reliance, creativity and happiness—woven into one world of possibility.</p>
                 <div className="org-socials">
-                    <a href="https://www.youtube.com/@dr.rajaramyadav" aria-label="YouTube" className="flex items-center">
+                    <a href={siteLinks.socials.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="flex items-center">
                         <Youtube />
                     </a>
-                    <a href="https://www.instagram.com/officialrry" aria-label="Instagram">
+                    <a href={siteLinks.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                         <Instagram />
                     </a>
-                    <a href="https://www.linkedin.com/in/dr-raja-ram-yadav-astrologer-33a64821/" aria-label="LinkedIn">
+                    <a href={siteLinks.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                         <Linkedin />
+                    </a>
+                    <a href={siteLinks.socials.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <Facebook />
                     </a>
                 </div>
             </div>
@@ -51,10 +55,10 @@ export default function OrganizationLanding() {
                 </div>
                 <div>
                     <h4>Connect</h4>
-                    <a href="tel:+919911894311">
-                        <Phone /> +91 99118 94311</a>
-                    <a href="mailto:contact@rrworld.org">
-                        <Mail /> contact@rrworld.org</a>
+                    <a href={siteLinks.phoneHref}>
+                        <Phone /> {siteLinks.phoneDisplay}</a>
+                    <a href={siteLinks.emailHref}>
+                        <Mail /> {siteLinks.email}</a>
                     <span>
                         <MapPin /> New Delhi, India</span>
                 </div>
@@ -62,8 +66,8 @@ export default function OrganizationLanding() {
                 <div className="org-footer-bottom">
                     <span>© 2026 RR World. Built for a brighter, kinder future.</span>
                     <div>
-                        <a href="#">Privacy</a>
-                        <a href="#">Terms</a>
+                        <Link href="/privacy-policy">Privacy</Link>
+                        <Link href="/terms-of-service">Terms</Link>
                         <span>शिक्षा · स्वावलंबन · स्वरोजगार</span>
                     </div>
                 </div>
