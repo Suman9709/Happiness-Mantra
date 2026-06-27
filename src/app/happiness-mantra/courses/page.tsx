@@ -9,7 +9,7 @@ export default function CoursesPage() {
                 <div className="hm-container">
                     <p className="hm-course-kicker"><CirclePlay /> Happiness Mantra courses</p>
                     <h1>All mantra courses</h1>
-                    <p>Choose a path and open its dedicated syllabus, modules and YouTube lessons.</p>
+                    <p>Choose a path and open its dedicated syllabus, Drive videos and PDF notes.</p>
                 </div>
             </section>
 

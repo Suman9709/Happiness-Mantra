@@ -29,6 +29,7 @@ export default function HappinessMantraActions({ showAllProducts = false }: { sh
     const [mode, setMode] = useState<RequestMode>("consult");
     const [selectedProduct, setSelectedProduct] = useState(products[0].name);
     const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState("");
     const [isDialogOpen, setIsDialogOpen] = useState(false);
 
     useEffect(() => {
@@ -54,6 +55,7 @@ export default function HappinessMantraActions({ showAllProducts = false }: { sh
     function openForm(nextMode: RequestMode, productName?: string) {
         setMode(nextMode);
         setSubmitted(false);
+        setError("");
         if (productName) {
             setSelectedProduct(productName);
         }
@@ -63,19 +65,35 @@ export default function HappinessMantraActions({ showAllProducts = false }: { sh
     function closeForm() {
         setIsDialogOpen(false);
         setSubmitted(false);
+        setError("");
     }
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
+        const screenshot = formData.get("paymentScreenshot");
+
+        if (mode === "order" && screenshot instanceof File) {
+            const allowedTypes = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
+            if (!allowedTypes.includes(screenshot.type)) {
+                setError("Upload only JPG, PNG, WEBP or PDF payment proof.");
+                return;
+            }
+            if (screenshot.size > 5 * 1024 * 1024) {
+                setError("Payment screenshot must be under 5 MB.");
+                return;
+            }
+        }
+
         const payload = Object.fromEntries(formData.entries());
 
-        // TODO: Add your Google Sheet API call here.
+        // TODO: Add a protected API call only when backend storage is available.
         // Example: await fetch("/api/happiness-mantra-requests", { method: "POST", body: formData });
-        // In that API route, upload the payment screenshot if present, then append `payload` to Google Sheets.
+        // Until then, use an official Google Form for payment proof and private Google Drive access review.
         console.log("Happiness Mantra request payload", payload);
 
         setSubmitted(true);
+        setError("");
         event.currentTarget.reset();
     }
 
@@ -159,7 +177,7 @@ export default function HappinessMantraActions({ showAllProducts = false }: { sh
                         <div className="hm-dialog-copy">
                             <div className="hm-eyebrow">Send request</div>
                             <h2 id="hm-dialog-title">{isOrder ? "Buy product" : "Book consultation"}</h2>
-                            <p>{isOrder ? "All details and payment screenshot are mandatory for product orders." : "All contact details are mandatory. Payment screenshot is not needed for consultation."}</p>
+                            <p>{isOrder ? "Share your contact details and payment proof. Our team will verify the request before dispatch." : "Share your contact details and the RR World team will follow up with you."}</p>
                         </div>
 
                         <form className="hm-request-form" onSubmit={handleSubmit}>
@@ -190,19 +208,30 @@ export default function HappinessMantraActions({ showAllProducts = false }: { sh
                                             ))}
                                         </select>
                                     </label>
-                                    <label className="hm-file-input">
-                                        Payment screenshot
-                                        <span><Upload /> Upload payment screenshot</span>
-                                        <input name="paymentScreenshot" type="file" accept="image/*,.pdf" required />
-                                    </label>
                                 </>
                             )}
+                            {isOrder && (
+                                <label className="hm-file-input">
+                                    Payment screenshot
+                                    <span><Upload /> Upload JPG, PNG, WEBP or PDF under 5 MB</span>
+                                    <input name="paymentScreenshot" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" required />
+                                </label>
+                            )}
+                            <label className="hm-security-consent">
+                                <input name="verificationConsent" type="checkbox" required />
+                                <span>I confirm that the details shared above are accurate.</span>
+                            </label>
                             <button type="submit">
                                 Submit request <Send />
                             </button>
+                            {error && (
+                                <p className="hm-request-error" aria-live="polite">
+                                    <ShieldCheck /> {error}
+                                </p>
+                            )}
                             {submitted && (
                                 <p className="hm-request-success" aria-live="polite">
-                                    <CheckCircle2 /> Request captured. Connect the Google Sheet API at the TODO comment to store it.
+                                    <CheckCircle2 /> Request captured. For production, connect this form to an official Google Form or protected API.
                                 </p>
                             )}
                         </form>
