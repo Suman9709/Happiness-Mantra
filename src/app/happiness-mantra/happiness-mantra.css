@@ -27,6 +27,7 @@
 
 .hm-nav-inner {
     height: 78px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between
@@ -47,7 +48,7 @@
 
 .hm-brand strong,
 .hm-footer-brand strong {
-    font: 600 21px/1 var(--hm-display), serif
+    font: 600 21px/1 var(--hm-display), sans-serif
 }
 
 .hm-brand small {
