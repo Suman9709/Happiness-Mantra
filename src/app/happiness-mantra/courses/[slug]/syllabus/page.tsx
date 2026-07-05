@@ -1,7 +1,8 @@
 ﻿import Link from "next/link";
-import { ArrowLeft, CheckCircle2, Download, ExternalLink, PlayCircle } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ExternalLink, FileText, PlayCircle } from "lucide-react";
 import { notFound } from "next/navigation";
 import { allHappinessCourses, getHappinessCourse, getModuleLectureCount, getModuleLectures } from "../../../course-data";
+import SyllabusAccordion from "./SyllabusAccordion";
 
 type Props = {
     params: Promise<{
@@ -24,6 +25,7 @@ export default async function HappinessSyllabusPage({ params }: Props) {
     }
 
     const firstLecture = getModuleLectures(course.modules[0])[0];
+    const totalLectures = course.modules.reduce((total, module) => total + getModuleLectureCount(module), 0);
 
     return (
         <main className="hm-course-page hm-syllabus-page">
@@ -35,48 +37,29 @@ export default async function HappinessSyllabusPage({ params }: Props) {
                     <p className="hm-course-kicker">{course.duration} | {course.level}</p>
                     <h1>{course.title} Syllabus</h1>
                     <p>{course.outcome}</p>
+                    <div className="hm-syllabus-hero-stats" aria-label="Syllabus summary">
+                        <span><PlayCircle /> {totalLectures} video lectures</span>
+                        <span><FileText /> PDF notes included</span>
+                        <span><CheckCircle2 /> Preview and verified access</span>
+                    </div>
                     <div className="hm-course-actions">
                         <a className="hm-button hm-primary" href={firstLecture.videoUrl} target="_blank" rel="noreferrer">
-                            Open Drive video <ExternalLink size={17} />
+                            Open first video <ExternalLink size={17} />
                         </a>
+                        <Link className="hm-button hm-ghost" href={`/happiness-mantra/courses/${course.slug}#enroll`}>
+                            Request enrollment
+                        </Link>
                     </div>
                 </div>
             </section>
 
             <section className="hm-course-body">
                 <div className="hm-container hm-syllabus-list">
-                    {course.modules.map((module, index) => (
-                        <details className="hm-syllabus-module" key={module.title}>
-                            <summary>
-                                <span>{String(index + 1).padStart(2, "0")}</span>
-                                <div>
-                                    <h2>{module.title}</h2>
-                                    <p>{module.description ?? `${course.topics[index] ?? course.title} focused lesson with examples, reflection and practice.`}</p>
-                                </div>
-                                <small><PlayCircle /> {getModuleLectureCount(module)} video lectures</small>
-                                <small><CheckCircle2 /> {module.isDemo ? "Preview access" : "Verified access"}</small>
-                            </summary>
-                            <div className="hm-lecture-list">
-                                {getModuleLectures(module).map((lecture, lectureIndex) => (
-                                    <article key={lecture.title}>
-                                        <b>{String(lectureIndex + 1).padStart(2, "0")}</b>
-                                        <div>
-                                            <h4>{lecture.title}</h4>
-                                            <p>{lecture.video}</p>
-                                        </div>
-                                        <div className="hm-lecture-actions">
-                                            <a href={lecture.videoUrl} target="_blank" rel="noreferrer">
-                                                <PlayCircle /> Watch video
-                                            </a>
-                                            <a href={lecture.pdfUrl} target="_blank" rel="noreferrer">
-                                                <Download /> PDF notes
-                                            </a>
-                                        </div>
-                                    </article>
-                                ))}
-                            </div>
-                        </details>
-                    ))}
+                    <div className="hm-course-section-title">
+                        <p>Complete curriculum</p>
+                        <h2>Modules, lectures and notes</h2>
+                    </div>
+                    <SyllabusAccordion courseTitle={course.title} topics={course.topics} modules={course.modules} />
                 </div>
             </section>
         </main>

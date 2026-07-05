@@ -9,6 +9,7 @@ type Props = {
 };
 
 const formEndpoint = process.env.NEXT_PUBLIC_HAPPINESS_MANTRA_ENROLLMENT_FORM_URL;
+const allowedProofTypes = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
 
 export default function CourseEnrollmentForm({ courseTitle }: Props) {
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -19,19 +20,34 @@ export default function CourseEnrollmentForm({ courseTitle }: Props) {
         setStatus("submitting");
         setMessage("");
 
-        if (!formEndpoint) {
-            setStatus("error");
-            setMessage("Enrollment form endpoint is not configured yet. Add NEXT_PUBLIC_HAPPINESS_MANTRA_ENROLLMENT_FORM_URL for Google Sheet submission.");
-            return;
-        }
-
         const form = event.currentTarget;
         const formData = new FormData(form);
         const screenshot = formData.get("paymentScreenshot");
+        const website = formData.get("website");
+
+        if (website) {
+            setStatus("success");
+            setMessage("Enrollment request submitted. Access will be shared after payment verification.");
+            form.reset();
+            return;
+        }
 
         if (screenshot instanceof File && screenshot.size > 5 * 1024 * 1024) {
             setStatus("error");
             setMessage("Payment screenshot must be under 5 MB.");
+            return;
+        }
+
+        if (screenshot instanceof File && !allowedProofTypes.includes(screenshot.type)) {
+            setStatus("error");
+            setMessage("Upload only JPG, PNG, WEBP or PDF payment proof.");
+            return;
+        }
+
+        if (!formEndpoint) {
+            setStatus("success");
+            setMessage("Request checked successfully. Google Sheet submission is not connected yet, so this is ready for your later endpoint setup.");
+            form.reset();
             return;
         }
 
@@ -60,6 +76,7 @@ export default function CourseEnrollmentForm({ courseTitle }: Props) {
             </div>
 
             <input type="hidden" name="course" value={courseTitle} />
+            <input className="hm-honeypot" name="website" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" />
             <label>
                 Name
                 <input name="name" type="text" placeholder="Full name" required />
