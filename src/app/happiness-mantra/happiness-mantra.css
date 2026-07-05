@@ -83,6 +83,33 @@
     padding: 11px 17px
 }
 
+.hm-mantra-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 10px 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    border-top: 1px solid #2f18500f
+}
+
+.hm-mantra-nav::-webkit-scrollbar {
+    display: none
+}
+
+.hm-mantra-nav a {
+    flex: 0 0 auto;
+    color: #6e4865;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 900
+}
+
+.hm-mantra-nav a:hover {
+    color: #d15e2d
+}
+
 .hm-menu {
     display: none;
     color: #281940

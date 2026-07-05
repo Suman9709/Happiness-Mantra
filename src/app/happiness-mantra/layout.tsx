@@ -8,8 +8,16 @@ const display = Cormorant_Garamond({ subsets: ["latin"], variable: "--hm-display
 const body = Manrope({ subsets: ["latin"], variable: "--hm-body" });
 
 export const metadata: Metadata = {
-  title: "Happiness Mantra | Ancient Wisdom for Modern Life",
-  description: "Seven practical paths for astrology, happiness, success, money, music, maths and language.",
+  title: {
+    default: "Happiness Mantra | Ancient Wisdom for Modern Life",
+    template: "%s | Happiness Mantra",
+  },
+  description: "Twelve practical paths for astrology, health, success, money, music, maths, language, love, career, business, spirituality and humanity.",
+  icons: {
+    icon: "/happinessmantraLogo.png",
+    shortcut: "/happinessmantraLogo.png",
+    apple: "/happinessmantraLogo.png",
+  },
 };
 
 export default function HappinessMantraLayout({

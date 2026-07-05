@@ -14,6 +14,21 @@ const pillars = [
 
 const founderHighlights = ["B.E. Mechanical", "MBA HR", "Ph.D. Hindi", "UGC-NET Hindi"];
 
+const mantraNavItems = [
+    { slug: "jyotish-mantra", title: "Jyotish Mantra" },
+    { slug: "health-mantra", title: "Health Mantra" },
+    { slug: "success-mantra", title: "Success Mantra" },
+    { slug: "money-mantra", title: "Money Mantra" },
+    { slug: "music-mantra", title: "Music Mantra" },
+    { slug: "maths-mantra", title: "Maths Mantra" },
+    { slug: "bhasha-mantra", title: "Bhasha Mantra" },
+    { slug: "love-mantra", title: "Love Mantra" },
+    { slug: "career-mantra", title: "Career Mantra" },
+    { slug: "business-mantra", title: "Business Mantra" },
+    { slug: "spiritual-mantra", title: "Spiritual Mantra" },
+    { slug: "humanity-mantra", title: "Humanity Mantra" },
+];
+
 export default function OrganizationLanding() {
     return <div className="org-page">
         <header className="org-nav">
@@ -22,6 +37,9 @@ export default function OrganizationLanding() {
                 <nav><a href="#about">Our story</a><a href="#initiatives">Initiatives</a><a href="#founder">Founder</a><a href="#impact">Impact</a><a href="#contact">Contact</a></nav>
                 <Link href="/happiness-mantra" className="org-nav-cta">Happiness Mantra <ArrowRight /></Link>
                 <a className="org-mobile-menu" href="#initiatives" aria-label="Explore initiatives"><Menu /></a>
+            </div>
+            <div className="org-mantra-nav" aria-label="Happiness Mantra courses">
+                {mantraNavItems.map(item => <Link href={`/happiness-mantra/courses/${item.slug}`} key={item.slug} target="_blank" rel="noopener noreferrer">{item.title}</Link>)}
             </div>
         </header>
 

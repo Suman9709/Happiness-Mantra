@@ -39,6 +39,9 @@ export default function HappinessMantraLanding(): React.JSX.Element {
                         <Menu />
                     </a>
                 </div>
+                <div className="hm-mantra-nav" aria-label="Happiness Mantra courses">
+                    {mantras.map(m => <Link href={`/happiness-mantra/courses/${m.slug}`} key={m.slug} target="_blank" rel="noopener noreferrer">{m.title}</Link>)}
+                </div>
             </header>
             <section className="hm-hero">
                 <div className="hm-stars" />

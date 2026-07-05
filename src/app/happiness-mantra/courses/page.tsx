@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { ArrowRight, CirclePlay } from "lucide-react";
+import type { Metadata } from "next";
 import { allHappinessCourses } from "../course-data";
+
+export const metadata: Metadata = {
+    title: "All Mantra Courses",
+    description: "Explore all 12 Happiness Mantra courses and open each course syllabus, videos and PDF notes.",
+};
 
 export default function CoursesPage() {
     return (

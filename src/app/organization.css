@@ -94,6 +94,33 @@
   width: 16px
 }
 
+.org-mantra-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  border-top: 1px solid #1738400f
+}
+
+.org-mantra-nav::-webkit-scrollbar {
+  display: none
+}
+
+.org-mantra-nav a {
+  flex: 0 0 auto;
+  color: #557077;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800
+}
+
+.org-mantra-nav a:hover {
+  color: #008c77
+}
+
 .org-mobile-menu {
   display: none;
   color: var(--ink)
